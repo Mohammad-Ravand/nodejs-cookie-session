@@ -1,0 +1,23 @@
+{
+  "name": "nodejs-session-cookie",
+  "version": "1.0.0",
+  "description": "working with cookie and session in nodejs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mohammad-Ravand/nodejs-cookie-session.git"
+  },
+  "keywords": [
+    "nodejs-session",
+    "nodejs-cookie"
+  ],
+  "author": "Mohammad Ravand",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mohammad-Ravand/nodejs-cookie-session/issues"
+  },
+  "homepage": "https://github.com/Mohammad-Ravand/nodejs-cookie-session#readme"
+}
