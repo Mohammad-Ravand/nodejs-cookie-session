@@ -1,0 +1,22 @@
+mixin userCard(fullName,email,password,status)
+    .card.col-12.col-sm-10.col-md-10.col-md-8.col-lg-6.col-xl-4.mx-2(style='width: 18rem;')
+        .card-body
+            h5.card-title='status: '
+                if(status.code==1)
+                    span.text-success.h6.
+                        #{status.text}
+                else
+                    span.text-danger.h6.
+                        #{status.text}
+        ul.list-group.list-group-flush
+            li.list-group-item fullName: # #{fullName}
+            li.list-group-item email: # #{email}
+            li.list-group-item password: # #{password}
+        .card-body
+            if(status.code==1)
+                a.card-link.btn.btn-sm.btn-danger(href='#') logout
+            else if(status.code==0)
+                a.card-link.btn.btn-sm.btn-success(href='#') login
+            else
+                span.
+                    not set

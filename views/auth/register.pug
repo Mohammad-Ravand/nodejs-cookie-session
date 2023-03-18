@@ -1,0 +1,43 @@
+extends ./../layout.pug
+
+block content
+    include ./../notification/success.pug
+    include ./../notification/error.pug
+
+    if(notification && notification.status)
+       if(notification.message)
+            +success(notification.message)
+    else
+        if(notification && notification.message)
+            +error(notification.message)
+
+    .row.justify-content-center.mt-3
+        .col-12.col-md-10.col-lg-6.col-xl-4
+            form(action="/users/" method="post")
+                .mb-3
+                    label.form-label(for='fullName') FullName
+                    if(userRegister.fullName)
+                        input.form-control#fullName(type='text' value=userRegister.fullName name="fullName")
+                    else
+                        input.form-control#fullName(type='text' value=''.fullName name="fullName")
+                .mb-3
+                    label.form-label(for='email') Email address
+                    if(userRegister.email)
+                        input.form-control#email(type='email' name="email" value=userRegister.email aria-describedby='emailHelp')
+                    else
+                        input.form-control#email(type='email' name="email" aria-describedby='emailHelp')
+                #emailHelp.form-text We'll never share your email with anyone else.
+                    .mb-3
+                    label.form-label(for='password') Password
+                    if(userRegister.password)
+                        input.form-control#password(type='password' value=userRegister.password name="password")
+                    else
+                        input.form-control#password(type='password' name="password")
+                .mb-3
+                    label.form-label(for='repeatPassword') Repeat Password
+                    if(userRegister.repeatPassword)
+                        input.form-control#repeatPassword(type='password' value=userRegister.repeatPassword name="repeatPassword")
+                    else
+                        input.form-control#repeatPassword(type='password' name="repeatPassword")
+                .mb-3.text-center
+                    button.btn.btn-primary(type='submit') Register

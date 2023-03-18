@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  .container.text-center.justify-content-center
+  .row
+    .col.my-2
+      .alert.alert-success.alert-dismissible.text-center(role='alert')
+        h5.
+          You Successfully Logged In !!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  
+  h4.text-center.alert.alert-secondary.mx-auto.
+    List Of Registered Users
+  include ./mixin/userCard.pug
+  .row.justify-content-center
+    +userCard('user one','one@gmail.com','onePassword',{code:0,text:'not logged in'})
+    +userCard('user two','two@gmail.com','thwoPassword',{code:1 ,text:'logged in'})
+    +userCard('user three','three@gmail.com','threePassword',{code:0,text:'not logged in'})
+    +userCard('user four','four@gmail.com','fourPassword',{code:1 ,text:'logged in'})

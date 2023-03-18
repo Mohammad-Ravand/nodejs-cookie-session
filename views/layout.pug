@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+
+  body(class="container-fluid pt-2")
+    include layout/navbar.pug
+    block content
+
+    script(src='/javascripts/bootstrap.min.js')
+

@@ -1,0 +1,38 @@
+extends ./../layout.pug
+
+block content
+    
+    include ./../notification/success.pug
+    include ./../notification/error.pug
+
+    if(notification && notification.status)
+        if(notification.message)
+                +success(notification.message)
+    else
+        if(notification && notification.message)
+            +error(notification.message)
+                
+    .row.justify-content-center.mt-3
+        .col-12.col-md-10.col-lg-6.col-xl-4
+            form(action="/users/login" method="post")
+                .mb-3
+                    label.form-label(for='exampleInputEmail1') Email address
+
+                    if(register_email)
+                        input.form-control#exampleInputEmail1(type='email' name="email" value=register_email   aria-describedby='emailHelp')
+                    else
+                        input.form-control#exampleInputEmail1(type='email' name="email" value=''   aria-describedby='emailHelp')
+
+                    #emailHelp.form-text We'll never share your email with anyone else.
+                .mb-3
+                    label.form-label(for='password') Password
+                    if(register_password)
+                        input.form-control#password(type='password' value=register_password  name="password")
+                    else
+                        input.form-control#password(type='password' value=''  name="password")
+
+                .mb-3.form-check
+                    input.form-check-input#rememberMe(type='checkbox' checked="true" name="rememberMe")
+                    label.form-check-label(for='rememberMe') Remember me
+                .mb-3.text-center
+                    button.btn.btn-primary(type='submit') Login
