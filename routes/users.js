@@ -27,8 +27,12 @@ router.post('/login', function(req, res, next) {
 
   //verify user registration
   if(userRegister.email==req.body.email && userRegister.password==req.body.password){
-    res.send('your infos have to save in seession');
+    //save register user and login  status
+    req.session.registerUser = userRegister;
+    req.session.login = true;
 
+    //redirect user to home page
+    res.redirect('/');
   }else{
     notification.status=false;
     notification.message="username does not refer to registered user"
