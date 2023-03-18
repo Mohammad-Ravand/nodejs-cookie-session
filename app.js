@@ -7,10 +7,17 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var cookieParser = require('cookie-parser')
+var session = require('express-session')
 
 var app = express();
 app.use(cookieParser('F6F013A77DFB4C38DD90F9AF37FD289C24026936'))
-
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 'F6F013A77DFB4C38DD90F9AF37FD289C24026936',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
