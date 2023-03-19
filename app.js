@@ -7,14 +7,25 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var cookieParser = require('cookie-parser')
+const redis = require('redis')
 var session = require('express-session')
+const RedisStore = require("connect-redis").default
+
+// Initialize client.
+let redisClient = redis.createClient()
+redisClient.connect().catch(console.error)
+
+// Initialize store.
+let redisStore = new RedisStore({ host: '127.0.0.1', port: 6379, client: redisClient,ttl :  260}) 
 
 
 var app = express();
+
 app.use(cookieParser('F6F013A77DFB4C38DD90F9AF37FD289C24026936'))
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
   secret: 'F6F013A77DFB4C38DD90F9AF37FD289C24026936',
+  store:redisStore,
   resave: true,
   maxAge: 3600000,
   saveUninitialized: false,

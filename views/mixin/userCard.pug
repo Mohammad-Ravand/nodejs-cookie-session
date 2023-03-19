@@ -14,9 +14,9 @@ mixin userCard(fullName,email,password,status)
             li.list-group-item password: # #{password}
         .card-body
             if(status.code==1)
-                a.card-link.btn.btn-sm.btn-danger(href='#') logout
+                a.card-link.btn.btn-sm.btn-danger(href='/users/logout') logout
             else if(status.code==0)
-                a.card-link.btn.btn-sm.btn-success(href='#') login
+                a.card-link.btn.btn-sm.btn-success(href='') login
             else
                 span.
                     not set

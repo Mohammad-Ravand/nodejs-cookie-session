@@ -50,6 +50,20 @@ router.get('/create', function(req, res, next) {
   res.render('auth/register',{title:"Register User",userRegister:{...userRegister}});
 });
 
+
+
+/* GET show register user page. */
+router.get('/logout', function(req, res, next) {
+  const login = Boolean(req.session.login)
+  if(login){
+    req.session.login = false;
+    req.session.userRegister = {};
+  }
+
+  res.redirect('/users/login');
+});
+
+
 /* POST register user listing. */
 router.post('/', function(req, res, next) {
 
