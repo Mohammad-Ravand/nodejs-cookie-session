@@ -19,7 +19,15 @@ redisClient.connect().catch(console.error)
 let redisStore = new RedisStore({ host: '127.0.0.1', port: 6379, client: redisClient,ttl :  260}) 
 
 
+
 var app = express();
+app.use(async (req, res, next) => {
+  // await redisClient.connect();
+
+  req.client = redisClient;
+  // await redisClient.disconnect();
+  next()
+})
 
 app.use(cookieParser('F6F013A77DFB4C38DD90F9AF37FD289C24026936'))
 app.set('trust proxy', 1) // trust first proxy

@@ -13,5 +13,6 @@ block content
     List Of Registered Users
   include ./mixin/userCard.pug
   .row.justify-content-center
-    +userCard(userRegister.fullName,userRegister.email,userRegister.password,login)
+    each userRegister,index in  usersRegister
+      +userCard(userRegister.fullName,userRegister.email,userRegister.password,login,userRegister.self)
     
